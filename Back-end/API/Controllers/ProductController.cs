@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 
+using SugarShack.Application.Common.Dtos;
+using SugarShack.Application.Product.Queries;
 using SugarShack.Application.Product.Queries.GetAllProducts;
+using SugarShack.Application.Product.Queries.GetAllProductsByCatalogue;
+using SugarShack.Domain.Enums;
 
 namespace The_Maplr_Sugar_Shack.Controllers
 {
- 
+
     public class ProductController : ApiControllerBase
     {
         private readonly ILogger<ProductController> _logger;
@@ -14,22 +18,18 @@ namespace The_Maplr_Sugar_Shack.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public async Task<IList<ProductDto>> Get()
+        [HttpGet, Route("GetProductInfo")]
+        public async Task<IList<ProductDto>> GetAllproducts()
         {
-             return await Mediator.Send(new GetAllProductsQuery());
+            return await Mediator.Send(new GetAllProducts());
         }
 
-        //[HttpGet(Name = "GetAllproducts")]
-        //public IEnumerable<WeatherForecast> GetAllproducts()
-        //{
-        //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        //    {
-        //        Date = DateTime.Now.AddDays(index),
-        //        TemperatureC = Random.Shared.Next(-20, 55),
-        //        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        //    })
-        //    .ToArray();
-        //}
+        [HttpGet, Route("GetProductByCatalogue")]
+        public async Task<IList<ProductDto>> GetAllProductsByCatalogue(Catalogue type)
+        {
+            return await Mediator.Send(new GetAllProductsByCatalogue() { Type = type });
+        }
+
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 
 using SugarShack.Domain.Entities;
+using SugarShack.Domain.Enums;
 
 using System;
 using System.Collections.Generic;
@@ -36,10 +37,10 @@ namespace SugarShack.Infrastructure
 
         public async Task TrySeedAsync()
         {
-            _context.Products.AddRange(new List<Product>() { new Product { Name = "X", Price =24.50 },
-                    new Product { Name = "Y", Price =24.50  },
-                    new Product { Name = "Z", Price =24.50  },
-                    new Product { Name = "J", Price =24.50  }});
+            _context.Products.AddRange(new List<Product>() { new Product { Name = "Maple syrup Special", Price =8.50, Type = Catalogue.Amber},
+                    new Product {  Name = "Maple syrup added honey", Price =10.50, Type = Catalogue.Dark },
+                    new Product {  Name = "Maple syrup Original", Price =6.50, Type = Catalogue.Clear  },
+                    new Product {  Name = "Maple syrup Regular", Price =7.50, Type = Catalogue.Amber  }});
 
             await _context.SaveChangesAsync();
         }

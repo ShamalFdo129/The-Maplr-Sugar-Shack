@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 
 using SugarShack.Application.Common.Mappings;
-namespace SugarShack.Application.Product.Queries.GetAllProducts
+namespace SugarShack.Application.Common.Dtos
 {
     public class ProductDto: IMapFrom<SugarShack.Domain.Entities.Product>
     {
+        public int Id { get; set; }
         public string? Name { get; set; }
         public double Price { get; set; }
         public int Type { get; set; }

@@ -17,8 +17,4 @@
     <ProjectReference Include="..\SugarShack.Domain\SugarShack.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Cart\" />
-  </ItemGroup>
-
 </Project>
